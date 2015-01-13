@@ -1,14 +1,19 @@
 package junit;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import example.*;
+import org.junit.*;
+
+import java.math.*;
+import java.util.*;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 public class AllAssertions {
 
     @Test
     @Ignore
-    public void examples() throws Exception {
+    public void junitExamples() throws Exception {
         // Fails a test with no message.
         Assert.fail();
 
@@ -44,5 +49,31 @@ public class AllAssertions {
 
         // Asserts that two objects do not refer to the same object.
         Assert.assertNotSame(o1, o2);
+    }
+
+    @Test
+    @Ignore
+    public void hamcrestExamples() throws Exception {
+        assertThat(new int[]{0, 1, 2, 3}, is(equalTo(new int[]{0, 1, 2, 3})));
+        assertThat("Ala", equalTo("Ala"));
+        assertThat("Ala", is("Ala"));
+        assertThat("Ala", is(equalTo("Ala")));
+        assertThat("Ala", is(not(equalTo("kot"))));
+        assertThat("Ala ma kota", allOf(startsWith("Ala"), containsString(" ma "), endsWith("kota")));
+        assertThat("Bartek Piech", both(startsWith("Bartek")).and(endsWith("Piech")));
+
+        BigDecimal actual = new BigDecimal("1.2");
+        BigDecimal expected = new BigDecimal("1.2");
+        assertThat(actual, describedAs("a big decimal equal to %0", equalTo(expected), expected.toPlainString()));
+
+        List<String> people = Arrays.asList("Bartek Piech", "Bartek Cebryk", "Bartek Mikulski");;
+        assertThat(people, everyItem(startsWith("Bartek")));
+        assertThat(people, hasItem(startsWith("Bartek")));
+        assertThat(people, hasItems(startsWith("Bartek"), endsWith("i")));
+
+        Cheese cheese = new Cheddar();
+        assertThat(cheese, is(notNullValue()));
+        assertThat(cheese, isA(Cheese.class));
+        assertThat(cheese, is(instanceOf(Cheddar.class)));
     }
 }
