@@ -14,6 +14,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>prod</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.spockframework</groupId>
       <artifactId>spock-core</artifactId>
       <version>0.7-groovy-2.0</version>
@@ -52,4 +58,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>

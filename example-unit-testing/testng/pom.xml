@@ -14,9 +14,15 @@
 
   <dependencies>
     <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>prod</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.1.1</version>
+      <version>6.8.21</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

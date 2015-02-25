@@ -16,6 +16,7 @@
   </properties>
 
   <modules>
+    <module>prod</module>
     <module>junit</module>
     <module>testng</module>
     <module>spock</module>
